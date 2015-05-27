@@ -1,6 +1,6 @@
 requirejs.config({
   shim: {
-
+    "bower_components/underscore/underscore": { exports: '_' }
   },
   paths: {
     "podcast.application": "scripts/application/application",
