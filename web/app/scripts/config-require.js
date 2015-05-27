@@ -6,8 +6,9 @@ requirejs.config({
   },
   paths: {
     'podcast.application': 'scripts/application/application',
-    'podcast.router': 'scripts/application/router',
-    'podcast.controller': 'scripts/controller/controller',
+    'podcast.application.renderer': 'scripts/application/renderer',
+    'podcast.application.controller': 'scripts/application/controller',
+    'podcast.application.Router': 'scripts/application/router',
     'podcast.templates': 'scripts/generated/templates',
     backbone: 'bower_components/backbone/backbone',
     underscore: 'bower_components/underscore/underscore',
