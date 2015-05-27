@@ -60,6 +60,13 @@ module.exports = function (grunt) {
         files: ['<%= config.app %>/styles/{,*/}*.css'],
         tasks: ['newer:copy:styles', 'autoprefixer']
       },
+      templates: {
+        files: ['<%= config.app %>/templates/{,*/}*.hbs'],
+        tasks: ['handlebars:compile'],
+        options: {
+          livereload: '<%= connect.options.livereload %>'
+        }
+      },
       livereload: {
         options: {
           livereload: '<%= connect.options.livereload %>'
@@ -128,6 +135,7 @@ module.exports = function (grunt) {
           src: [
             '.tmp',
             '<%= config.dist %>/*',
+            '<%= config.dist %>/scripts/generated/*',
             '!<%= config.dist %>/.git*'
           ]
         }]
@@ -145,6 +153,8 @@ module.exports = function (grunt) {
         'Gruntfile.js',
         '<%= config.app %>/scripts/{,*/}*.js',
         '!<%= config.app %>/scripts/vendor/*',
+        '!<%= config.app %>/scripts/generated/*',
+        '!<%= config.app %>/scripts/config-require.js',
         'test/spec/{,*/}*.js'
       ]
     },
@@ -162,7 +172,7 @@ module.exports = function (grunt) {
     // Compiles LESS to CSS and generates necessary files if requested
     less: {
       options: {
-        paths: ['./bower_components'],
+        paths: ['./bower_components']
       },
       dist: {
         options: {
@@ -190,6 +200,35 @@ module.exports = function (grunt) {
           dest: '.tmp/styles',
           ext: '.css'
         }]
+      }
+    },
+
+    handlebars: {
+      compile: {
+        options: {
+          wrapped: true,
+          amd: ['handlebars'],
+          partialRegex: /^par_/,
+          namespace: function(filepath) {
+            var output = 'podcast',
+                arr = filepath.split('/');
+            arr.splice(0, 2);
+            arr.splice(arr.length - 1, 2);
+
+            if(arr.length) {
+              output += '.' + arr.join('.');
+            }
+
+            return output;
+          },
+          processName: function(filepath) {
+            var arr = filepath.replace(/\.hbs$/, '').split('/');
+            return arr[arr.length-1];
+          }
+        },
+        files: {
+          '<%= config.app %>/scripts/generated/templates.js': '<%= config.app %>/templates/**/*.hbs'
+        }
       }
     },
 
@@ -401,6 +440,7 @@ module.exports = function (grunt) {
   });
 
   grunt.loadNpmTasks('grunt-bower-requirejs');
+  grunt.loadNpmTasks('grunt-contrib-handlebars');
 
   grunt.registerTask('serve', 'start the server and preview your app, --allow-remote for remote access', function (target) {
     if (grunt.option('allow-remote')) {
@@ -412,6 +452,7 @@ module.exports = function (grunt) {
 
     grunt.task.run([
       'clean:server',
+      'handlebars:compile',
       'wiredep',
       'bowerRequirejs',
       'concurrent:server',
@@ -450,6 +491,7 @@ module.exports = function (grunt) {
     'autoprefixer',
     'concat',
     'cssmin',
+    'handlebars:compile',
     'uglify',
     'copy:dist',
     'modernizr',
