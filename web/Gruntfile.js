@@ -92,7 +92,7 @@ module.exports = function (grunt) {
         options: {
           middleware: function(connect) {
             return [
-              modRewrite(['!\\.html|\\.js|\\.svg|\\.css|\\.png$ /index.html [L]']),
+              modRewrite(['!\\.html|\\.js|\\.svg|\\.css|\\.png|\\.otf|\\.ttf|\\.woff|\\.woff2$ /index.html [L]']),
               connect.static('.tmp'),
               connect().use('/bower_components', connect.static('./bower_components')),
               connect().use('/fonts', connect.static('<%= config.app %>/bower_components/bootstrap/dist/fonts')),

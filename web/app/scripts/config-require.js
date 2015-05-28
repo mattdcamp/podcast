@@ -2,7 +2,8 @@ requirejs.config({
   shim: {
     'bower_components/underscore/underscore': {
       exports: '_'
-    }
+    },
+    'bootstrap' : { 'deps' :['jquery'] }
   },
   paths: {
     'podcast.application': 'scripts/application/application',
@@ -11,6 +12,8 @@ requirejs.config({
     'podcast.application.Router': 'scripts/application/router',
     'podcast.templates': 'scripts/generated/templates',
     'podcast.views.layout': 'scripts/views/layout',
+    'podcast.views.nav': 'scripts/views/nav',
+    'podcast.views.content': 'scripts/views/content',
     'podcast.model.layout': 'scripts/models/layout',
     backbone: 'bower_components/backbone/backbone',
     underscore: 'bower_components/underscore/underscore',
@@ -19,7 +22,8 @@ requirejs.config({
     handlebars: 'bower_components/handlebars/handlebars',
     marionette: 'bower_components/marionette/lib/core/backbone.marionette',
     'backbone.babysitter': 'bower_components/backbone.babysitter/lib/backbone.babysitter',
-    'backbone.wreqr': 'bower_components/backbone.wreqr/lib/backbone.wreqr'
+    'backbone.wreqr': 'bower_components/backbone.wreqr/lib/backbone.wreqr',
+    'font-awesome': 'bower_components/font-awesome/fonts/*'
   },
   packages: [
 
