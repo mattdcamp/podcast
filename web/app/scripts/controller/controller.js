@@ -1,14 +1,19 @@
-define('podcast.controller', ['marionette'], function(Marionette) {
+define('podcast.controller', ['marionette', 'podcast.models.layoutModel'], function(Marionette, layoutModel) {
   'use strict';
 
   var PodcastController = Marionette.Controller.extend({
     initialize: function() {},
     start: function() {},
     home: function() {
-      window.console.log('At Home!!');
+      this.setPage('home');
     },
     test: function() {
-      window.console.log('At Test!!');
+      this.setPage('test');
+    },
+    setPage: function(page) {
+      layoutModel.set({
+        page: page
+      });
     }
   });
 

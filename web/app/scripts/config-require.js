@@ -10,6 +10,8 @@ requirejs.config({
     'podcast.application.controller': 'scripts/application/controller',
     'podcast.application.Router': 'scripts/application/router',
     'podcast.templates': 'scripts/generated/templates',
+    'podcast.views.layout': 'scripts/views/layout',
+    'podcast.model.layout': 'scripts/models/layout',
     backbone: 'bower_components/backbone/backbone',
     underscore: 'bower_components/underscore/underscore',
     bootstrap: 'bower_components/bootstrap/dist/js/bootstrap',
