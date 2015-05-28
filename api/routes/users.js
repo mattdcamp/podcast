@@ -7,10 +7,13 @@ var router = express.Router();
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-    User.find(function(err, users) {
-        if(err) {return next(err);}
-        res.json(users);
-    });
+    var user = {},
+        isLoggedIn = !!req.user;
+    if(isLoggedIn) {
+        user = req.user[0];
+    }
+    user.isLoggedIn = isLoggedIn;
+    res.json(user);
 });
 
 module.exports = router;

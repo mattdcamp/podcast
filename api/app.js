@@ -38,11 +38,18 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-var routes = require('./routes/index');
-app.use('/', routes);
+app.all('/*', function(req, res, next) {
+    res.set({
+        'Access-Control-Allow-Origin': 'http://localhost:9000',
+        'Access-Control-Allow-Credentials': 'true',
+        'Access-Control-Allow-Methods': 'PUT, GET, POST, DELETE, OPTIONS',
+        'Access-Control-Allow-Headers': 'X-Requested-With'
+    });
+    next();
+});
 
 var users = require('./routes/users');
-app.use('/users', users);
+app.use('/user', users);
 
 var feeds = require('./routes/feeds');
 app.use('/feeds', feeds);
