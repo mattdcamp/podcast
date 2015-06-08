@@ -1,4 +1,4 @@
-define('podcast.model.search', ['backbone'], function(Backbone) {
+define('podcast.model.search', ['backbone'], function() {
   'use strict';
 
   return {}

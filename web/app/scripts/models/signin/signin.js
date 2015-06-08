@@ -1,9 +1,9 @@
-define('podcast.models.signin', ['backbone'], function(Backbone) {
+define('podcast.models.signin', ['../../../../bower_components/backbone/backbone'], function(Backbone) {
   'use strict';
 
   var SigninCollection, signinCollection;
   SigninCollection = Backbone.Collection.extend({
-    url: "http://localhost:3000/login/supported"
+    url: 'http://localhost:3000/login/supported'
   });
 
   signinCollection = new SigninCollection();

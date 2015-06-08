@@ -1,11 +1,11 @@
-define('podcast.views.nav', ['marionette', 'podcast.views.signin', 'podcast.views.nav.tabs', 'podcast.views.nav.search'], function(Marionette, signinView, tabView, searchView) {
+define('podcast.views.Nav', ['marionette', 'podcast.views.Signin', 'podcast.views.nav.Tabs', 'podcast.views.nav.Search'], function(Marionette) {
   'use strict';
 
-  var NavView, view;
+  var NavView;
   NavView = Marionette.LayoutView.extend({
     template: 'nav.navbar',
-    tagName: 'div',
-    className: 'container-fluid',
+    tagName: 'nav',
+    className: 'navbar navbar-inverse',
     regions: {
       //'tabs': '#nav-tabs',
       'signin': '#nav-collapse'
@@ -17,7 +17,6 @@ define('podcast.views.nav', ['marionette', 'podcast.views.signin', 'podcast.view
       //this.showChildView('search', searchView);
     }
   });
-  view = new NavView();
 
-  return view;
+  return NavView;
 });

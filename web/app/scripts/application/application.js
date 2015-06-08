@@ -1,4 +1,4 @@
-define('podcast.application', ['underscore', 'jquery', 'handlebars', 'marionette', 'backbone'], function (_, $, Handlebars, Marionette) {
+define('podcast.application', ['marionette'], function (Marionette) {
   'use strict';
 
   var PodcastApplication;

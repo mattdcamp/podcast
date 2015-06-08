@@ -1,4 +1,4 @@
-define('podcast.model.tabs', ['backbone'], function(Backbone) {
+define('podcast.model.tabs', ['backbone'], function() {
   'use strict';
 
   return {}

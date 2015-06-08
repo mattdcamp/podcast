@@ -4,9 +4,9 @@ define('podcast.application.Router', ['handlebars', 'podcast.application', 'podc
   application.module('Router', function(Router, app, Backbone, Marionette) {
    Router = Marionette.AppRouter.extend({
     appRoutes: {
-      'home': 'home',
-      'test': 'test',
-      '*actions': 'home'  //default
+      'home': 'gotoHomepage',
+      'sign-in': 'gotoSignin',
+      '*actions': 'gotoHomepage'  //default
     }
   });
 

@@ -1,13 +1,18 @@
-define('podcast.application.controller', ['handlebars', 'podcast.application'], function (Handlebars, application) {
+define('podcast.application.controller', ['handlebars', 'podcast.application', 'podcast.model.rootView'], function (Handlebars, application, rootViewModel) {
   'use strict';
 
   application.module('controller', function(controller) {
-    controller.home = function() {
-      window.console.log('Going home!');
+
+    controller.goto = function(name) {
+      rootViewModel.setView(name);
     };
 
-    controller.test = function() {
-      window.console.log('Going to test!');
+    controller.gotoHomepage = function() {
+      this.goto('home');
+    };
+
+    controller.gotoSignin = function() {
+      this.goto('signin');
     };
   });
 
