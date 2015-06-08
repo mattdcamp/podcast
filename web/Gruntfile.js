@@ -169,7 +169,13 @@ module.exports = function (grunt) {
     // Compiles LESS to CSS and generates necessary files if requested
     less: {
       options: {
-        paths: ['./bower_components']
+        paths: ['./bower_components'],
+        customFunctions: {
+          em: function(less, fontsize, basefontsize) {
+            basefontsize = (basefontsize) ? basefontsize.value : 16;
+            return fontsize.value/basefontsize+'em';
+          }
+        }
       },
       dist: {
         options: {
@@ -301,7 +307,8 @@ module.exports = function (grunt) {
         assetsDirs: [
           '<%= config.dist %>',
           '<%= config.dist %>/images',
-          '<%= config.dist %>/styles'
+          '<%= config.dist %>/styles',
+          '.tmp/styles'
         ]
       },
       html: ['<%= config.dist %>/{,*/}*.html'],
@@ -430,7 +437,6 @@ module.exports = function (grunt) {
       ],
       dist: [
         'less:dist',
-        'imagemin',
         'svgmin'
       ]
     }

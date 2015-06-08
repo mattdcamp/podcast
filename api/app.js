@@ -23,20 +23,19 @@ db.once('open', function callback() {
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
-app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(require('less-middleware')(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(session({
+app.use(logger('dev'))
+    .use(bodyParser.json())
+    .use(bodyParser.urlencoded({ extended: false }))
+    .use(express.static(path.join(__dirname, 'public')))
+    .use(session({
       secret: 'led tiger monkey',
       resave: false,
       saveUninitialized: false,
       rolling: true,
       store: new MongoStore({mongooseConnection: db})
-    }));
-app.use(passport.initialize());
-app.use(passport.session());
+    }))
+    .use(passport.initialize())
+    .use(passport.session());
 
 app.all('/*', function(req, res, next) {
     res.set({
@@ -53,6 +52,9 @@ app.use('/user', users);
 
 var feeds = require('./routes/feeds');
 app.use('/feeds', feeds);
+
+var supportedAuth = require('./routes/login/supported');
+app.use('/login/supported', supportedAuth);
 
 var googleAuth = require('./routes/login/google');
 app.use('/login/google', googleAuth);
