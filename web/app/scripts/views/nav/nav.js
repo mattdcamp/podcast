@@ -1,4 +1,4 @@
-define('podcast.views.Nav', ['marionette', 'podcast.views.Signin', 'podcast.views.nav.Tabs', 'podcast.views.nav.Search'], function(Marionette) {
+define('podcast.views.Nav', ['marionette', 'podcast.views.nav.User'], function(Marionette, UserView) {
   'use strict';
 
   var NavView;
@@ -8,12 +8,12 @@ define('podcast.views.Nav', ['marionette', 'podcast.views.Signin', 'podcast.view
     className: 'navbar navbar-inverse',
     regions: {
       //'tabs': '#nav-tabs',
-      'signin': '#nav-collapse'
+      'user': '#nav-user'
       //'search': '#search'
     },
     onBeforeShow: function() {
       //this.showChildView('tabs', tabView);
-      //this.showChildView('signin', signinView);
+      this.showChildView('user', new UserView());
       //this.showChildView('search', searchView);
     }
   });

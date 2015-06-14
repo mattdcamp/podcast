@@ -59,6 +59,9 @@ app.use('/login/supported', supportedAuth);
 var googleAuth = require('./routes/login/google');
 app.use('/login/google', googleAuth);
 
+var webRedirect = require('./routes/web');
+app.use('/redirect', webRedirect);
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

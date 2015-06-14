@@ -49,7 +49,7 @@ passport.use(new GoogleStrategy({
 
 router.get('/', passport.authenticate('google-openidconnect', { scope: ['email', 'profile'] }));
 
-router.get('/return', passport.authenticate('google-openidconnect', {successRedirect: '/user', failureRedirect: '/user' }));
+router.get('/return', passport.authenticate('google-openidconnect', {successRedirect: '/redirect/home', failureRedirect: '/redirect/web?path=loginFailure' }));
 
 
 

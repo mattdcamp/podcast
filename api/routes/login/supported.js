@@ -11,18 +11,6 @@ router.get('/', function (req, res) {
         url: prefix + "google"
     });
 
-    output.push({
-        name: "Facebook",
-        style: "facebook",
-        url: prefix + "facebook"
-    });
-
-    output.push({
-        name: "Twitter",
-        style: "twitter",
-        url: prefix + "twitter"
-    });
-
     res.json(output);
 });
 
