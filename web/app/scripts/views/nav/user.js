@@ -14,6 +14,9 @@ define('podcast.views.nav.User', ['marionette', 'podcast.model.user'], function(
     onRender: function() {
       var href = (this.model.get('isLoggedIn')) ? '/account' : '/sign-in';
       this.$el.attr('href', href);
+    },
+    modelEvents: {
+      'change:isLoggedIn': 'render'
     }
   });
 
