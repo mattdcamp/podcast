@@ -14,6 +14,10 @@ define('podcast.application.controller', ['handlebars', 'podcast.application', '
     controller.gotoSignin = function() {
       this.goto('signin');
     };
+
+    controller.gotoAccount = function() {
+      this.goto('account');
+    };
   });
 
   return application.module('controller');

@@ -1,4 +1,4 @@
-define('podcast.model.rootView', ['backbone', 'podcast.views.Nav', 'podcast.views.Homepage', 'podcast.views.Signin'], function(Backbone, NavView, HomepageView, SignInView) {
+define('podcast.model.rootView', ['backbone', 'podcast.views.Nav', 'podcast.views.Homepage', 'podcast.views.Signin', 'podcast.views.Account'], function(Backbone, NavView, HomepageView, SignInView, AccountView) {
   'use strict';
 
   var LayoutModel, model, viewMap;
@@ -6,7 +6,8 @@ define('podcast.model.rootView', ['backbone', 'podcast.views.Nav', 'podcast.view
   viewMap = {
     nav: NavView,
     home: HomepageView,
-    signin: SignInView
+    signin: SignInView,
+    account: AccountView
   };
 
   LayoutModel = Backbone.Model.extend({

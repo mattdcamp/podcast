@@ -6,6 +6,7 @@ define('podcast.application.Router', ['handlebars', 'podcast.application', 'podc
     appRoutes: {
       'home': 'gotoHomepage',
       'sign-in': 'gotoSignin',
+      'account': 'gotoAccount',
       '*actions': 'gotoHomepage'  //default
     }
   });

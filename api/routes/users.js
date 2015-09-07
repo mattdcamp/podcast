@@ -14,7 +14,8 @@ router.get('/', function(req, res, next) {
             email: u.emails[0],
             first_name: u.first_name,
             last_name: u.last_name,
-            photo: u.photos[0]
+            photo: u.photos[0],
+            provider: u.provider
         };
     }
     user.isLoggedIn = isLoggedIn;

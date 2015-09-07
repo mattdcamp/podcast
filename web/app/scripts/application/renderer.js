@@ -1,4 +1,4 @@
-define('podcast.application.renderer', ['handlebars', 'podcast.application', 'podcast.templates'], function (Handlebars, application, templates) {
+define('podcast.application.renderer', ['handlebars', 'podcast.application', 'podcast.templates', 'podcast.templateHelpers'], function (Handlebars, application, templates) {
   'use strict';
 
   application.module('renderer', function(renderer, app, Backbone, Marionette, $, _) {
@@ -6,8 +6,6 @@ define('podcast.application.renderer', ['handlebars', 'podcast.application', 'po
       if(typeof template === 'function') {
         template = template.call({}, data);
       }
-
-
       return template.split('.')
                 .reduce(function (o, x) {
                   return o[x];
