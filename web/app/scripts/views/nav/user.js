@@ -12,6 +12,7 @@ define('podcast.views.nav.User', ['marionette', 'podcast.model.user'], function(
       return output;
     },
     onRender: function() {
+      // the <a> is $el, it needs to be updated.
       var href = (this.model.get('isLoggedIn')) ? '/account' : '/sign-in';
       this.$el.attr('href', href);
     },
