@@ -31,6 +31,32 @@ router.get('/', function (req, res, next) {
     }
 });
 
+router.get('/listening', function (req, res, next) {
+    var usr = req.user[0];
+    if(usr) {
+        Feed.find({
+            '_id': { $in: usr.feeds }
+        }, function(err, feeds) {
+            if(!err) {
+                res.json(feeds)
+            }
+        });
+    } else {
+        res.json([]);
+    }
+});
+
+router.get('/all', function (req, res, next) {
+    Feed.find({})
+        .sort({pub_date: 1})
+        .limit(20)
+        .exec(function(err, feeds) {
+            if(!err) {
+                res.json(feeds);
+            }
+        });
+});
+
 router.get('/autocomplete', function(req, res, next) {
     Feed.autocomplete(req.query.param)
         .then(function(feeds) {

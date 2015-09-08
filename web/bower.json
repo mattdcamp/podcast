@@ -9,6 +9,7 @@
     "backbone": "~1.2.0",
     "marionette": "~2.4.1",
     "requirejs": "~2.1.17",
-    "bootstrap-social": "~4.9.0"
+    "bootstrap-social": "~4.9.0",
+    "masonry": "~3.3.2"
   }
 }
