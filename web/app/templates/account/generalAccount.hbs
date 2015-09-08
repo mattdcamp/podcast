@@ -1,8 +1,12 @@
 <h3>General Account Information</h3>
 <hr>
-<ul class="account-list account-general-list">
+<ul class="account-list account-general-list container-fluid">
   {{accountInfoItem name="First Name" value=first_name }}
   {{accountInfoItem name="Last Name" value=last_name }}
   {{accountInfoItem name="Email" value=email }}
   {{accountInfoItem name="Signin Provider" value=provider }}
+
+  <li class="row">
+    <a class="btn btn-warning col-md-6 col-sm-12 col-xs-12" href="#" role="button">Signout</a>
+  </li>
 </ul>
